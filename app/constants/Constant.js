@@ -11,6 +11,7 @@ const SCREEN_ROUTER = {
   CHAR_PIE: "CharPie",
   PRODUCT: "Product",
   CHAT: "Chat",
+  ROOM_CHAT : "RoomChat",
   WORK: "Work",
   BOTTOM_BAR: "BottomBar",
   ADD_MOVIES: "AddMovies"

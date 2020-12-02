@@ -35,30 +35,30 @@ const WorkScreen = () => {
     return (
       <View style={styles.vBody}>
         <TouchableOpacity onPress={() => handleMovie()}>
-          <Card style={styles.card1}>
-            <Text style={styles.txtCard}>Phim mới</Text>
+          <Card style={[styles.card, { backgroundColor: colors.purple3}]}>
             <Image
-              source={require("@app/assets/img/cinema_2.jpg")}
-              style={styles.imgMovies}
+              source={require("@app/assets/img/cinema.png")}
+              style={styles.imgEmail}
             />
+            <Text style={styles.txtCard}>Phim mới</Text>
           </Card>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleProduct()}>
-          <Card style={styles.card1}>
-            <Text style={styles.txtCard}>Sản phẩm</Text>
+          <Card style={[styles.card, { backgroundColor: colors.purple2}]}>
             <Image
-              source={require("@app/assets/img/product.jpg")}
-              style={styles.imgMovies}
+              source={require("@app/assets/img/coffee.png")}
+              style={styles.imgEmail}
             />
+            <Text style={styles.txtCard}>Sản phẩm</Text>
           </Card>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Card style={styles.card}>
-            <Text style={styles.txtCard}>Thông báo</Text>
+          <Card style={[styles.card, { backgroundColor: colors.purple1 }]}>
             <Image
               source={require("@app/assets/img/ic_email.png")}
               style={styles.imgEmail}
             />
+            <Text style={styles.txtCard}>Thông báo</Text>
           </Card>
         </TouchableOpacity>
       </View>
@@ -132,30 +132,20 @@ const styles = StyleSheet.create({
     marginBottom: scale(10)
   },
   card: {
-    backgroundColor: colors.blueOpacity,
+    // backgroundColor: colors.blueOpacity,
     width: width - 20,
     alignSelf: "center",
     height: scale(180),
     borderRadius: 8,
-    justifyContent: "center",
-    marginTop: scale(15)
+    marginTop: scale(15),
+    flexDirection: "row",
+    alignItems: "center"
   },
   imgEmail: {
     width: scale(120),
-    height: scale(120),
-    alignSelf: "center",
-    transform: [{ rotate: "-10deg" }],
-    opacity: 0.7
-    // marginTop :
-  },
-  card1: {
-    paddingHorizontal: 0,
-    width: width - 20,
-    alignSelf: "center",
-    height: scale(180),
-    borderRadius: 8,
-    justifyContent: "center",
-    marginTop: scale(15)
+    height: scale(120)
+    // transform: [{ rotate: "-10deg" }],
+    // opacity: 0.9
   },
   imgMovies: {
     width: width - 20,
@@ -164,12 +154,11 @@ const styles = StyleSheet.create({
     opacity: 0.7
   },
   txtCard: {
-    position: "absolute",
-    alignSelf: "center",
     zIndex: 100,
     fontFamily: fonts.roboto_medium,
-    fontSize: 30
-    // color : colors.active
+    fontSize: 30,
+    marginLeft: scale(30),
+    color: colors.pinkOpacity
   },
   modalDialog: {
     height: scale(100),

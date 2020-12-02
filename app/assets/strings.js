@@ -8,7 +8,8 @@ import i18 from '@i18';
         update_user_info: i18.t("update_user_info"),
         work: i18.t("work"),
         chat: i18.t("chat"),
-        chart_pie: i18.t("chart_pie")
+        chart_pie: i18.t("chart_pie"),
+        room_chat: i18.t("room_chat")
         }
  
         export default strings

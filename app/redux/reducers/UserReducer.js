@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: false,
         error: null,
-        data: action.payload,
+        data: action?.payload?.data,
       };
     }
     case GET_USER_FAIL: {

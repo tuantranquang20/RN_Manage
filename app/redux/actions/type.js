@@ -21,3 +21,12 @@ export const GET_PRODUCT_FAIL = 'base/getProductFail';
 export const GET_NOTIFICATION = 'base/getNotification';
 export const GET_NOTIFICATION_SUCCESS = 'base/getNotificationSuccess';
 export const GET_NOTIFICATION_FAIL = 'base/getNotificationFail';
+
+export const GET_ROOM_CHAT = 'base/getRoomChat';
+export const GET_ROOM_CHAT_SUCCESS = 'base/getRoomChatSuccess';
+export const GET_ROOM_CHAT_FAIL = 'base/getRoomChatFail';
+
+//api của Thống kê (statistics)
+export const GET_STATISTICS = 'base/getStatictis';
+export const GET_STATISTICS_SUCCESS = 'base/getStatictisSuccess';
+export const GET_STATISTICS_FAIL = 'base/getStatictisFail';

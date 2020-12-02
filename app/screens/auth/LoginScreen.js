@@ -39,19 +39,13 @@ function LoginScreen() {
 
   useEffect(() => {
     (async () => {
-      try {
-        if (!(Object.keys(user.data).length === 0)) {
-          await AsyncStorage.setItem("TOKEN", user.token);
-          setState({ ...state, loading: false });
-          NavigationUtil.navigate(SCREEN_ROUTER.MAIN);
-        }
-      } catch (error) {
-        setState({ ...state, loading: false });
-        console.log(error);
+      if (!(Object.keys(user.data).length === 0)) {
+        await AsyncStorage.setItem("TOKEN", user.token);
+        NavigationUtil.navigate(SCREEN_ROUTER.MAIN);
+      } else {
       }
     })();
   }, [user]);
-  useEffect(() => {}, [state]);
   const ggLogin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -61,7 +55,7 @@ function LoginScreen() {
         value: getToken.accessToken.toString(),
         type: LOGIN_TYPE.gg_type
       });
-      // await AsyncStorage.setItem('token', getToken.accessToken.toString());
+      await AsyncStorage.setItem("TOKEN", getToken.accessToken.toString());
       // NavigationUtil.navigate(SCREEN_ROUTER.MAIN);
     } catch (error) {
       console.log(error);
@@ -184,7 +178,7 @@ function LoginScreen() {
   return (
     <ScreenComponent
       bottomSheet={true}
-      isLoading={state.loading}
+      isLoading={user.isLoading}
       renderView={
         <View style={styles.container}>
           <KeyboardAwareScrollView contentContainerStyle={styles.center}>

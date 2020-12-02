@@ -37,13 +37,8 @@ const action = [
     screen: ""
   },
   {
-    img: R.images.ic_qr,
-    title: "QR thanh toán",
-    screen: ""
-  },
-  {
     img: R.images.ic_history,
-    title: "Lịch sử giao dịch",
+    title: "Lịch sử đơn hàng",
     screen: ""
   }
 ];
@@ -70,7 +65,6 @@ const UserScreen = () => {
   //       console.log(error);
   //     }
   //   }, []);
-
   const renderAvt = () => {
     return (
       <Card style={styles.headerAvt}>
@@ -80,7 +74,7 @@ const UserScreen = () => {
               style={styles.avt}
               source={{
                 uri:
-                  "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1116824365428401&height=200&width=200&ext=1605705026&hash=AeTpMWJ_ac-RkhQEO1Q"
+                  "https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/69519945_195041818158187_6125746850231222272_o.jpg?_nc_cat=100&ccb=2&_nc_sid=174925&_nc_ohc=YYQMM4NVihUAX_AeYhv&_nc_ht=scontent-sin6-1.xx&oh=f48c9e4560326e5a2dda289eede61f83&oe=5FDF749A"
               }}
             />
           </View>

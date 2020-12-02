@@ -239,7 +239,6 @@ class Fire {
   };
 
   uploadImage = async (result) => {
-    console.log(result, 'uploadImage');
     const imageURI =
       Platform.OS === 'android'
         ? result.uri
@@ -258,14 +257,18 @@ class Fire {
       xhr.open('GET', imageURI, true);
       xhr.send(null);
     });
-
+    //dòng dưới chưa chạy
     const storageRef = firebase
       .storage()
       .ref(`${THANH_AN}/images/${name.toString()}`);
     // .ref(`${THANH_AN_WINDS}/images/${name.toString()}`);
-    const snapshot = await storageRef.put(blob);
-    blob.close();
-    return await snapshot.ref.getDownloadURL();
+    try {
+      const snapshot = await storageRef.put(blob);
+      blob.close();
+      return await snapshot.ref.getDownloadURL();
+    } catch (error) {
+      console.log(error, " ?");
+    }
   };
 
   updateFocus = (userID1, userID2) => {

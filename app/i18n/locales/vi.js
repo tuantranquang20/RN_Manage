@@ -10,5 +10,6 @@ export default {
 	work : "Công việc",
 	chat : "Chat",
 	chart_pie : "Thống kê",
+	room_chat : "Nhắn tin"
 
 }

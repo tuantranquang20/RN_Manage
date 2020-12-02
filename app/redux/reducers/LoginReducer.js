@@ -1,26 +1,26 @@
 /* eslint-disable prettier/prettier */
-import AsyncStorage from '@react-native-community/async-storage';
-import {LOGIN, LOGIN_FAIL, LOGIN_SUCCESS} from '../actions/type';
+import AsyncStorage from "@react-native-community/async-storage";
+import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from "../actions/type";
 
 const initialState = {
   data: {},
-  isLoading: true,
+  isLoading: false,
   error: null,
-  token: null,
+  token: null
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case LOGIN: {
-      return {...state, isLoading: true};
+      return { ...state, isLoading: true };
     }
     case LOGIN_SUCCESS: {
       (async () => {
         // console.log(, "user Đang nhap");
         try {
           await AsyncStorage.setItem(
-            'USER_APP',
-            JSON.stringify(action.payload?.data?.user),
+            "USER_APP",
+            JSON.stringify(action.payload?.data?.user)
           );
         } catch (error) {
           console.log(error);
@@ -28,17 +28,17 @@ export default function (state = initialState, action) {
       })();
       return {
         ...state,
-        isLoading: false,
+        isLoading: true,
         error: null,
         data: action.payload?.data,
-        token: action.payload?.token,
+        token: action.payload?.token
       };
     }
     case LOGIN_FAIL: {
       return {
         ...state,
-        error: action.payload,
-        isLoading: false,
+        error: true,
+        isLoading: false
       };
     }
     default:

@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { requestLogin } from "@app/constants/Api";
+import { getUserInfoAction } from "@app/redux/actions/index";
 
 const HomeScreen = () => {
-  const handle = async () => {
-    try {
-      const a = await requestLogin({
-        phone: "0367173691",
-        password: "tuan12345"
-      });
-      console.log(a, "???");
-    } catch (error) {
-      console.log(error, "??k?");
-      return error;
-    }
-  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserInfoAction());
+  }, []);
+
   return (
     <View
       style={{
@@ -23,8 +17,7 @@ const HomeScreen = () => {
         alignItems: "center"
       }}
     >
-      <TouchableOpacity onPress={handle}>
-        <Text>Tuan dep trai vl :))</Text>
+      <TouchableOpacity onPress={() => {}}>
       </TouchableOpacity>
     </View>
   );

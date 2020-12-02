@@ -8,10 +8,10 @@ import RegisterScreen from "../screens/auth/RegisterScreen";
 import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
 import HomeScreen from "@app/screens/home/HomeScreen";
 import UserScreen from "../screens/user/UserScreen";
-import ChatScreen from "../screens/chat/ChatScreen";
 import RoomScreen from "../screens/chat/RoomScreen";
 import WorkScreen from "../screens/work/WorkScreen";
 import AddMoviesScreen from "../screens/work/movies/AddMoviesScreen";
+import ChatScreen from "../screens/chat/ChatScreen";
 import ChartScreen from "../screens/chart/ChartScreen";
 import { SCREEN_ROUTER } from "@constant";
 import R from "@R";
@@ -37,7 +37,7 @@ const Auth = createStackNavigator(
 const tabbarIcons = {
   [SCREEN_ROUTER.USER]: R.images.ic_user_color,
   [SCREEN_ROUTER.WORK]: R.images.ic_briefcase,
-  [SCREEN_ROUTER.CHAT]: R.images.ic_chat,
+  [SCREEN_ROUTER.ROOM_CHAT]: R.images.ic_chat,
   [SCREEN_ROUTER.CHAR_PIE]: R.images.ic_pie_chart
 };
 
@@ -79,19 +79,26 @@ const BottomTab = createBottomTabNavigator(
             <>
               <Image
                 source={R.images.icon_home}
-                style={
+                style={[
+                  Platform.OS == "android" ? { marginLeft: scale(2) } : {},
                   theme.dimension.width > 365
                     ? {
-                        width: 65,
-                        height: 65
+                        width: scale(65),
+                        height: scale(65)
                       }
                     : {
-                        width: 50,
-                        height: 50
+                        width: scale(50),
+                        height: scale(50)
                       }
-                }
+                ]}
               />
-              <Text style={Platform.OS == "android" ? { marginLeft: 3 } : {}}>
+              <Text
+                style={
+                  Platform.OS == "android"
+                    ? { marginLeft: scale(8) }
+                    : { marginLeft: scale(5) }
+                }
+              >
                 {R.strings.home}
               </Text>
             </>
@@ -100,7 +107,7 @@ const BottomTab = createBottomTabNavigator(
       }
     },
 
-    [SCREEN_ROUTER.CHAT]: {
+    [SCREEN_ROUTER.ROOM_CHAT]: {
       screen: RoomScreen,
       title: R.strings.chat,
       navigationOptions: {
@@ -147,7 +154,8 @@ const Main = createStackNavigator(
   {
     [SCREEN_ROUTER.BOTTOM_BAR]: BottomTab,
     [SCREEN_ROUTER.USER]: UserScreen,
-    [SCREEN_ROUTER.ADD_MOVIES]: AddMoviesScreen
+    [SCREEN_ROUTER.ADD_MOVIES]: AddMoviesScreen,
+    [SCREEN_ROUTER.CHAT]: ChatScreen
   },
   {
     defaultNavigationOptions: {
@@ -163,7 +171,7 @@ export default createAppContainer(
       [SCREEN_ROUTER.MAIN]: Main
     },
     {
-      initialRouteName: SCREEN_ROUTER.MAIN
+      initialRouteName: SCREEN_ROUTER.AUTH_LOADING
     }
   )
 );

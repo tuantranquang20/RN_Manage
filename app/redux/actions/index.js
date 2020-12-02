@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {
   GET_USER,
+  GET_USER_SUCCESS,
+  GET_USER_FAIL,
   GET_HOME,
   GET_HOME_FAIL,
   GET_HOME_SUCCESS,
@@ -13,71 +15,116 @@ import {
   RESET,
   USER_FB,
   USER_GG,
-} from './type';
+  GET_ROOM_CHAT,
+  GET_ROOM_CHAT_SUCCESS,
+  GET_ROOM_CHAT_FAIL,
+  GET_STATISTICS,
+  GET_STATISTICS_SUCCESS,
+  GET_STATISTICS_FAIL
+} from "./type";
 
-export const resetAction = (payload) => ({
+export const resetAction = payload => ({
   type: RESET,
-  payload,
+  payload
 });
-export const setUserFB = (payload) => ({
+export const setUserFB = payload => ({
   type: USER_FB,
-  payload,
+  payload
 });
 
 export const setUserGG = () => ({
-  type: USER_GG,
+  type: USER_GG
 });
 export const getUserInfoAction = () => ({
   type: GET_USER,
-  payload: {},
+});
+export const getUserInfoActionSuccess = () => ({
+  type: GET_USER_SUCCESS,
+  payload: {}
+});
+export const getUserInfoActionFailed = () => ({
+  type: GET_USER_FAIL,
+  payload: {}
 });
 
 //actions home
 export const getHomeRequest = () => ({
   type: GET_HOME,
-  payload: {},
+  payload: {}
 });
 export const getHomeRequestSuccess = () => ({
   type: GET_HOME_SUCCESS,
-  payload: {},
+  payload: {}
 });
 export const getHomeRequestFail = () => ({
   type: GET_HOME_FAIL,
-  payload: {},
+  payload: {}
 });
 
 //action login
-export const loginRequest = (payload) => {
+export const loginRequest = payload => {
   return {
     type: LOGIN,
-    payload,
+    payload
   };
 };
-export const loginRequestSuccess = (payload) => {
+export const loginRequestSuccess = payload => {
   return {
     type: LOGIN_SUCCESS,
-    payload,
+    payload
   };
 };
-export const loginRequestFail = (payload) => ({
+export const loginRequestFail = payload => ({
   type: LOGIN_FAIL,
-  payload,
+  payload
 });
 
 //actions product
-export const productRequest = (payload) => {
+export const productRequest = payload => {
   return {
     type: GET_PRODUCT,
-    payload,
+    payload
   };
 };
 export const productRequestSuccess = () => ({
   type: GET_PRODUCT_SUCCESS,
-  payload: {},
+  payload: {}
 });
 export const productRequestFail = () => ({
   type: GET_PRODUCT_FAIL,
-  payload: {},
+  payload: {}
 });
 
 //actions Notification
+
+//actions RoomChat
+export const roomChatRequest = payload => {
+  return {
+    type: GET_ROOM_CHAT,
+    payload
+  };
+};
+export const roomChatSuccess = () => ({
+  type: GET_ROOM_CHAT_SUCCESS,
+  payload: {}
+});
+export const roomChatFail = () => ({
+  type: GET_ROOM_CHAT_FAIL,
+  payload: {}
+});
+
+//actions Statistic
+export const statisticRequest = payload => {
+  return {
+    type: GET_STATISTICS,
+    payload
+  };
+};
+export const statisticSuccess = () => ({
+  type: GET_STATISTICS_SUCCESS,
+  payload: {}
+});
+export const statisticFail = () => ({
+  type: GET_STATISTICS_FAIL,
+  payload: {}
+});
