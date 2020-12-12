@@ -6,6 +6,7 @@ import {
   watchGetProduct,
   watchGetRoomChat,
   watchStatistic,
+  watchMovies
 } from "./NetworkSaga";
 
 export default function* rootSaga() {
@@ -15,4 +16,5 @@ export default function* rootSaga() {
   yield watchGetProduct;
   yield watchGetRoomChat;
   yield watchStatistic;
+  yield watchMovies;
 }

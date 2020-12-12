@@ -9,9 +9,9 @@ import reactotron from "reactotron-react-native";
 function createAxios() {
   // AsyncStorage.setItem("token", '773DE1FE9732F26F7552BC921CBE347E')
   var axiosInstant = axios.create();
-  // axiosInstant.defaults.baseURL = "http://192.168.1.208:3000/";
-  axiosInstant.defaults.baseURL = "http://192.168.43.100:3000/";
-  axiosInstant.defaults.timeout = 20000
+  axiosInstant.defaults.baseURL = "http://192.168.1.208:3000/";
+  // axiosInstant.defaults.baseURL = "http://192.168.43.100:3000/";
+  axiosInstant.defaults.timeout = 20000;
   axiosInstant.defaults.headers = {
     "Content-Type": "application/json"
   };
@@ -100,6 +100,12 @@ export const requestGetRoomChat = payload => {
 };
 export const requestStatistic = payload => {
   return handleResult(getAxios.get("home/admin"));
+};
+export const requestGetMovie = payload => {
+  return handleResult(getAxios.get("movie"));
+};
+export const requestCreateMovie = payload => {
+  return handleResult(getAxios.post("movie", payload));
 };
 
 export const requestGetLocation = payload => {

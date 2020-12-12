@@ -31,8 +31,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: scale(5)
   },
   inputStyle: {
-    //   paddingHorizontal : scale()
     // marginLeft : 19
-    marginHorizontal: scale(5)
+    // marginHorizontal: scale(5)
   }
 });

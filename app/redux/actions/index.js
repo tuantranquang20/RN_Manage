@@ -20,7 +20,10 @@ import {
   GET_ROOM_CHAT_FAIL,
   GET_STATISTICS,
   GET_STATISTICS_SUCCESS,
-  GET_STATISTICS_FAIL
+  GET_STATISTICS_FAIL,
+  GET_MOVIES,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_FAIL
 } from "./type";
 
 export const resetAction = payload => ({
@@ -36,7 +39,7 @@ export const setUserGG = () => ({
   type: USER_GG
 });
 export const getUserInfoAction = () => ({
-  type: GET_USER,
+  type: GET_USER
 });
 export const getUserInfoActionSuccess = () => ({
   type: GET_USER_SUCCESS,
@@ -126,5 +129,22 @@ export const statisticSuccess = () => ({
 });
 export const statisticFail = () => ({
   type: GET_STATISTICS_FAIL,
+  payload: {}
+});
+
+//action Movies
+
+export const moviesRequest = payload => {
+  return {
+    type: GET_MOVIES,
+    payload
+  };
+};
+export const moviesSuccess = () => ({
+  type: GET_MOVIES_SUCCESS,
+  payload: {}
+});
+export const moviesFail = () => ({
+  type: GET_MOVIES_FAIL,
   payload: {}
 });

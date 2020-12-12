@@ -11,10 +11,15 @@ const SCREEN_ROUTER = {
   CHAR_PIE: "CharPie",
   PRODUCT: "Product",
   CHAT: "Chat",
-  ROOM_CHAT : "RoomChat",
+  ROOM_CHAT: "RoomChat",
   WORK: "Work",
   BOTTOM_BAR: "BottomBar",
-  ADD_MOVIES: "AddMovies"
+  ADD_MOVIES: "AddMovies",
+  ADD_PRODUCTS: "AddProducts",
+  ADD_IMAGE_MOVIES: "AddImageMovies",
+  ADD_IMAGE_PRODUCTS: "AddImageProducts",
+  MOVIES_CURRENT: "MoviesCurrent",
+  PRODUCTS_CURRENT: "ProductCurrent",
 };
 
 export { SCREEN_ROUTER };

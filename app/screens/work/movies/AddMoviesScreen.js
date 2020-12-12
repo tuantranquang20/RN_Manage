@@ -4,9 +4,13 @@ import ModalDialog from "@app/components/ModalDialog";
 import ScreenComponent from "@app/components/ScreenComponent";
 import TextInput from "@app/components/TextInput";
 import VDatePicker from "@app/components/VDatePicker";
+import { SCREEN_ROUTER } from "@app/constants/Constant";
 import { colors } from "@app/constants/Theme";
+import NavigationUtil from "@app/navigation/NavigationUtil";
 import React, { useState } from "react";
 import {
+  Alert,
+  Dimensions,
   FlatList,
   Image,
   StyleSheet,
@@ -16,6 +20,8 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { scale } from "react-native-size-matters";
+
+const { width } = Dimensions.get("window");
 
 //data Flat
 const dataCategory = [
@@ -60,8 +66,46 @@ const AddMoviesScreen = () => {
     setState({ ...state, [key]: value });
   };
   const handleCheckContinue = () => {
+    const {
+      nameMovies,
+      priceMovies,
+      descriptionMovies,
+      noteMovies,
+      typeMovies,
+      authorsMovies,
+      categoryMovies,
+      timeMovies,
+      timeStart,
+      timeEnd,
+      languageMovies,
+      trailerMovies
+    } = state;
     setState({ ...state, err: true });
-    const checked = Object.values(state).find(el => el == "");
+    if (
+      nameMovies == "" ||
+      priceMovies == "" ||
+      descriptionMovies == "" ||
+      noteMovies == "" ||
+      typeMovies == [] ||
+      authorsMovies == "" ||
+      categoryMovies == [] ||
+      timeMovies == "" ||
+      timeStart == "" ||
+      timeEnd == "" ||
+      languageMovies == "" ||
+      trailerMovies == ""
+    ) {
+      Alert.alert(
+        "Thông báo",
+        "Nhập đầy đủ các trường",
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
+    } else {
+      NavigationUtil.navigate(SCREEN_ROUTER.ADD_IMAGE_MOVIES, {
+        params: state
+      });
+    }
   };
   const handleTypeMov = () => {
     setState({ ...state, isVisibleTypeMov: true });
@@ -93,7 +137,7 @@ const AddMoviesScreen = () => {
     const itemTick = categoryMovies.find(el => el == item);
     return (
       <TouchableOpacity
-        style={styles.typeMov}
+        style={styles.typeItem}
         onPress={() => {
           let newTypeCategory = [];
           if (categoryMovies?.includes(item)) {
@@ -104,7 +148,7 @@ const AddMoviesScreen = () => {
           setState({ ...state, categoryMovies: newTypeCategory });
         }}
       >
-        <Text>{item}</Text>
+        <Text style={styles.txtItem}>{item}</Text>
         {itemTick && (
           <Image source={R.images.icon_check} style={styles.itemCheck} />
         )}
@@ -157,7 +201,7 @@ const AddMoviesScreen = () => {
   };
   const renderBody = () => {
     return (
-      <View>
+      <View style={styles.container}>
         <KeyboardAwareScrollView>
           <TextInput
             err={!state.nameMovies && state.err === true && true}
@@ -185,24 +229,28 @@ const AddMoviesScreen = () => {
             defaultValue={state.noteMovies}
             onChangeText={handleTextInput("noteMovies")}
           />
-          <View style={styles.typeMov}>
-            <Text>Thể loại</Text>
-            <TouchableOpacity onPress={handleCategory}>
-              <Text>modal</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={handleCategory} style={styles.typeMov}>
+            <Text style={[styles.txtType, { width: width - 100 }]}>
+              Thể loại
+            </Text>
+            <Text numberOfLines={1} lineBreakMode={"tail"} style={{ flex: 1 }}>
+              {state.categoryMovies.map(el => el)}
+            </Text>
+          </TouchableOpacity>
           <TextInput
             err={!state.authorsMovies && state.err === true && true}
             label={"Đạo diễn"}
             defaultValue={state.authorsMovies}
             onChangeText={handleTextInput("authorsMovies")}
           />
-          <View style={styles.typeMov}>
-            <Text>Định dạng phim</Text>
-            <TouchableOpacity onPress={handleTypeMov}>
-              <Text>modal</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={handleTypeMov} style={styles.typeMov}>
+            <Text style={[styles.txtType, { width: width - 35 }]}>
+              Định dạng phim
+            </Text>
+            <Text numberOfLines={1} lineBreakMode={"tail"} style={{ flex: 1 }}>
+              {state.typeMovies.map(el => el)}
+            </Text>
+          </TouchableOpacity>
           <TextInput
             err={!state.timeMovies && state.err === true && true}
             label={"Thời gian phim ( phút )"}
@@ -210,7 +258,9 @@ const AddMoviesScreen = () => {
             defaultValue={state.timeMovies}
             onChangeText={handleTextInput("timeMovies")}
           />
-          <Text>Thời gian phim</Text>
+          <Text style={[styles.txtType, { marginVertical: scale(10) }]}>
+            Thời gian phim
+          </Text>
           <VDatePicker
             changeFromDate={dStart =>
               setState({ ...state, timeStart: dStart.dateString })
@@ -233,7 +283,11 @@ const AddMoviesScreen = () => {
             defaultValue={state.trailerMovies}
             onChangeText={handleTextInput("trailerMovies")}
           />
-          <Button title={"Tiếp tục"} onPress={handleCheckContinue} />
+          <Button
+            containerStyle={styles.btn}
+            title={"Tiếp tục"}
+            onPress={handleCheckContinue}
+          />
         </KeyboardAwareScrollView>
       </View>
     );
@@ -252,7 +306,7 @@ const AddMoviesScreen = () => {
             contentContainerStyle={
               state.isVisibleCategory
                 ? { height: scale(300) }
-                : { height: scale(100) }
+                : { height: scale(130) }
             }
             renderH={
               state.isVisibleCategory
@@ -277,10 +331,33 @@ export default AddMoviesScreen;
 const styles = StyleSheet.create({
   typeMov: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    marginTop: scale(15)
+  },
+  typeItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: scale(10)
   },
   itemCheck: {
     width: scale(15),
     height: scale(15)
+  },
+  txtType: {
+    fontFamily: R.fonts.roboto_regular,
+    fontSize: 16,
+    color: colors.gray
+  },
+  btn: {
+    marginVertical: scale(25),
+    marginHorizontal: scale(15)
+  },
+  container: {
+    marginHorizontal: scale(5)
+  },
+  txtItem: {
+    fontSize: 16,
+    fontFamily: R.fonts.roboto_regular,
+    marginVertical: scale(5)
   }
 });

@@ -19,7 +19,10 @@ import {
   GET_ROOM_CHAT_FAIL,
   GET_STATISTICS,
   GET_STATISTICS_SUCCESS,
-  GET_STATISTICS_FAIL
+  GET_STATISTICS_FAIL,
+  GET_MOVIES,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_FAIL
 } from "../actions/type";
 
 import * as API from "../../constants/Api";
@@ -79,6 +82,16 @@ export function* getStatisticSaga(payload) {
     yield put({ type: GET_STATISTICS_FAIL, payload: err });
   }
 }
+//lấy Movies
+export function* getMoviesSaga(payload) {
+  try {
+    const response = yield call(API.requestGetMovie, payload);
+    yield put({ type: GET_MOVIES_SUCCESS, payload: response });
+  } catch (err) {
+    console.log(err);
+    yield put({ type: GET_MOVIES_FAIL, payload: err });
+  }
+}
 
 export const watchGetUser = takeEvery(GET_USER, getUserInforSaga);
 export const watchGetHome = takeEvery(GET_HOME, getDataHomeSaga);
@@ -86,3 +99,4 @@ export const watchLogin = takeEvery(LOGIN, loginSaga);
 export const watchGetProduct = takeEvery(GET_PRODUCT, getProductSaga);
 export const watchGetRoomChat = takeEvery(GET_ROOM_CHAT, getRoomChatSaga);
 export const watchStatistic = takeEvery(GET_STATISTICS, getStatisticSaga);
+export const watchMovies = takeEvery(GET_MOVIES, getMoviesSaga);

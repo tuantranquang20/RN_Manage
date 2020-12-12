@@ -13,6 +13,12 @@ import WorkScreen from "../screens/work/WorkScreen";
 import AddMoviesScreen from "../screens/work/movies/AddMoviesScreen";
 import ChatScreen from "../screens/chat/ChatScreen";
 import ChartScreen from "../screens/chart/ChartScreen";
+import AddImageMoviesScreen from "../screens/work/movies/AddImageMoviesScreen";
+import ListMoviesScreen from "../screens/work/movies/ListMoviesScreen";
+import AddProductScreen from "../screens/work/products/AddProductScreen";
+import AddImageProductScreen from "../screens/work/products/AddImageProductScreen";
+import ListProductScreen from "../screens/work/products/ListProductScreen";
+
 import { SCREEN_ROUTER } from "@constant";
 import R from "@R";
 import * as theme from "@theme";
@@ -38,7 +44,8 @@ const tabbarIcons = {
   [SCREEN_ROUTER.USER]: R.images.ic_user_color,
   [SCREEN_ROUTER.WORK]: R.images.ic_briefcase,
   [SCREEN_ROUTER.ROOM_CHAT]: R.images.ic_chat,
-  [SCREEN_ROUTER.CHAR_PIE]: R.images.ic_pie_chart
+  [SCREEN_ROUTER.CHAR_PIE]: R.images.ic_pie_chart,
+  [SCREEN_ROUTER.HOME]: R.images.home
 };
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
@@ -63,49 +70,60 @@ const BottomTab = createBottomTabNavigator(
         tabBarLabel: R.strings.work
       }
     },
-    [SCREEN_ROUTER.CHAR_PIE]: {
-      screen: ChartScreen,
-      title: R.strings.chart_pie,
-      navigationOptions: {
-        tabBarLabel: R.strings.chart_pie
-      }
-    },
+    // [SCREEN_ROUTER.CHAR_PIE]: {
+    //   screen: ChartScreen,
+    //   title: R.strings.chart_pie,
+    //   navigationOptions: {
+    //     tabBarLabel: R.strings.chart_pie
+    //   }
+    // },
     [SCREEN_ROUTER.HOME]: {
       screen: HomeScreen,
       title: R.strings.home,
       navigationOptions: {
-        tabBarLabel: () => {
-          return (
-            <>
-              <Image
-                source={R.images.icon_home}
-                style={[
-                  Platform.OS == "android" ? { marginLeft: scale(2) } : {},
-                  theme.dimension.width > 365
-                    ? {
-                        width: scale(65),
-                        height: scale(65)
-                      }
-                    : {
-                        width: scale(50),
-                        height: scale(50)
-                      }
-                ]}
-              />
-              <Text
-                style={
-                  Platform.OS == "android"
-                    ? { marginLeft: scale(8) }
-                    : { marginLeft: scale(5) }
-                }
-              >
-                {R.strings.home}
-              </Text>
-            </>
-          );
-        }
+        tabBarLabel: R.strings.home
       }
     },
+    // [SCREEN_ROUTER.HOME]: {
+    //   screen: HomeScreen,
+    //   title: R.strings.home,
+    //   navigationOptions: {
+    //     tabBarLabel: props => {
+    //       return (
+    //         <>
+    //           <Image
+    //             source={R.images.icon_home}
+    //             style={[
+    //               // Platform.OS == "android" ? { marginLeft: scale(5) } : {},
+    //               theme.dimension.width > 365
+    //                 ? props.focused
+    //                   ? { width: scale(65), height: scale(65) }
+    //                   : { width: scale(60), height: scale(60) }
+    //                 : props.focused
+    //                 ? {
+    //                     width: scale(50),
+    //                     height: scale(50)
+    //                   }
+    //                 : {
+    //                     width: scale(45),
+    //                     height: scale(45)
+    //                   }
+    //             ]}
+    //           />
+    //           <Text
+    //             style={
+    //               Platform.OS == "android"
+    //                 ? { marginLeft: scale(8) }
+    //                 : { marginLeft: scale(5) }
+    //             }
+    //           >
+    //             {R.strings.home}
+    //           </Text>
+    //         </>
+    //       );
+    //     }
+    //   }
+    // },
 
     [SCREEN_ROUTER.ROOM_CHAT]: {
       screen: RoomScreen,
@@ -155,7 +173,13 @@ const Main = createStackNavigator(
     [SCREEN_ROUTER.BOTTOM_BAR]: BottomTab,
     [SCREEN_ROUTER.USER]: UserScreen,
     [SCREEN_ROUTER.ADD_MOVIES]: AddMoviesScreen,
-    [SCREEN_ROUTER.CHAT]: ChatScreen
+    [SCREEN_ROUTER.CHAT]: ChatScreen,
+    [SCREEN_ROUTER.ADD_IMAGE_MOVIES]: AddImageMoviesScreen,
+    [SCREEN_ROUTER.MOVIES_CURRENT]: ListMoviesScreen,
+    [SCREEN_ROUTER.ADD_PRODUCTS]: AddProductScreen,
+    [SCREEN_ROUTER.ADD_IMAGE_MOVIES]: AddImageProductScreen,
+    [SCREEN_ROUTER.PRODUCTS_CURRENT]: ListProductScreen,
+
   },
   {
     defaultNavigationOptions: {

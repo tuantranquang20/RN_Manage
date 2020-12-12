@@ -30,3 +30,8 @@ export const GET_ROOM_CHAT_FAIL = 'base/getRoomChatFail';
 export const GET_STATISTICS = 'base/getStatictis';
 export const GET_STATISTICS_SUCCESS = 'base/getStatictisSuccess';
 export const GET_STATISTICS_FAIL = 'base/getStatictisFail';
+
+//api movies
+export const GET_MOVIES = 'base/getMovies';
+export const GET_MOVIES_SUCCESS = 'base/getMoviesSuccess';
+export const GET_MOVIES_FAIL = 'base/getMoviesFail';

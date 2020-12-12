@@ -36,7 +36,13 @@ const colors = {
   black: "#000000",
   olive: "#808000",
   blueSea: "#00FFFF",
-  pinkOpacity: "#FFE1FF"
+  pinkOpacity: "#FFE1FF",
+  drankGreen: "#006000",
+  drankRed: "#950000",
+  drankBlue: "#007470",
+  drankPurple: "#9500B1",
+  drankRedChart : "#C70007",
+  drankBlueChart : "#00A289"
 };
 
 const sizes = {

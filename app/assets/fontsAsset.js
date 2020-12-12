@@ -12,7 +12,7 @@ const fonts = {
   roboto_regular: "Roboto-Regular",
   roboto_thin: "Roboto-Thin",
   roboto_thinitalic: "Roboto-ThinItalic",
-  spacemono_regular: "SpaceMono-Regular"
+  spacemono_regular: "SpaceMono-Regular",
 }
 
 export default fonts

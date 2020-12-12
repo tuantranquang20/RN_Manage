@@ -6,6 +6,7 @@ import LoginReducer from './LoginReducer';
 import ProductReducer from './ProductReducer';
 import RoomChatReducer from './RoomChatReducer';
 import StatisticReducer from './StatisticReducer';
+import MoviesReducer from './MoviesReducer';
 
 import UserFBReducer from './UserFBReducer';
 import {RESET} from '../actions/type';
@@ -17,7 +18,9 @@ appReducer = combineReducers({
   productReducer : ProductReducer,
   userFBReducer : UserFBReducer,
   roomChatReducer : RoomChatReducer,
-  statisticReducer : StatisticReducer
+  statisticReducer : StatisticReducer,
+  moviesReducer : MoviesReducer,
+
 });
 
 const initialState = appReducer({}, {});

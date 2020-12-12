@@ -35,7 +35,7 @@ const WorkScreen = () => {
     return (
       <View style={styles.vBody}>
         <TouchableOpacity onPress={() => handleMovie()}>
-          <Card style={[styles.card, { backgroundColor: colors.purple3}]}>
+          <Card style={[styles.card, { backgroundColor: colors.purple3 }]}>
             <Image
               source={require("@app/assets/img/cinema.png")}
               style={styles.imgEmail}
@@ -44,7 +44,7 @@ const WorkScreen = () => {
           </Card>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleProduct()}>
-          <Card style={[styles.card, { backgroundColor: colors.purple2}]}>
+          <Card style={[styles.card, { backgroundColor: colors.purple2 }]}>
             <Image
               source={require("@app/assets/img/coffee.png")}
               style={styles.imgEmail}
@@ -67,9 +67,9 @@ const WorkScreen = () => {
   const closeModal = () => {
     setIsVisible(!isVisible);
   };
-  const handleNavigate = () => {
+  const handleNavigate = screen => {
     setIsVisible(!isVisible);
-    NavigationUtil.navigate(SCREEN_ROUTER.ADD_MOVIES);
+    NavigationUtil.navigate(screen);
   };
   const renderViewMovies = () => {
     return (
@@ -81,7 +81,7 @@ const WorkScreen = () => {
         </TouchableOpacity>
         <View style={styles.line} />
         <TouchableOpacity
-          onPress={() => handleNavigate(SCREEN_ROUTER.ADD_MOVIES)}
+          onPress={() => handleNavigate(SCREEN_ROUTER.MOVIES_CURRENT)}
         >
           <Text style={styles.txtModal}>Xem các phim hiện có</Text>
         </TouchableOpacity>
@@ -91,11 +91,17 @@ const WorkScreen = () => {
   const renderViewProduct = () => {
     return (
       <View>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => handleNavigate(SCREEN_ROUTER.ADD_PRODUCTS)}
+        >
           <Text style={styles.txtModal}>Thêm sản phẩm mới</Text>
         </TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            handleNavigate(SCREEN_ROUTER.PRODUCTS_CURRENT);
+          }}
+        >
           <Text style={styles.txtModal}>Xem các sản phẩm hiện có</Text>
         </TouchableOpacity>
       </View>

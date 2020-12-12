@@ -17,7 +17,7 @@ import fonts from "@app/assets/fontsAsset";
 import TextPrice from "@app/components/TextPrice";
 import moment from "moment";
 
-const ListMoviesScreen = () => {
+const ListProductScreen = () => {
   const disptach = useDispatch();
   const state = useSelector(state => state.moviesReducer);
 
@@ -81,7 +81,7 @@ const ListMoviesScreen = () => {
   );
 };
 
-export default ListMoviesScreen;
+export default ListProductScreen;
 
 const styles = StyleSheet.create({
   itemContainer: {
